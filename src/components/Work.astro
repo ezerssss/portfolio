@@ -1,134 +1,46 @@
+---
+import { getCollection } from "astro:content";
+import { nameToColor } from "../util/color";
+
+const work = await getCollection("work");
+---
+
 <section
     id="work"
-    class="lg:px-8 sticky top-6 lg:pt-5 lg:pb-8 rounded-xl lg:border lg:border-[#1db6a5]/40 h-fit w-fit space-y-5 lg:min-w-105"
+    class="lg:px-8 lg:sticky lg:top-6 lg:pt-5 lg:pb-8 rounded-xl lg:border lg:border-[#1db6a5]/40 h-fit w-fit space-y-5 lg:min-w-105"
 >
     <h2 class="font-semibold text-lg">Work</h2>
 
     <div class="space-y-8">
-        <article class="flex gap-3 items-start">
-            <div
-                class="rounded-xl aspect-square h-10 flex items-center justify-center bg-green-800/70"
-            >
-                <p class="font-black m-0">P</p>
-            </div>
+        {
+            work.map((w) => {
+                const { data } = w;
+                const { name, position, date } = data;
+                const backgroundColor = nameToColor(name);
 
-            <div class="space-y-1">
-                <p class="text-sm font-semibold">Punto.ph</p>
-
-                <div class="-space-y-0.5">
-                    <div class="flex gap-10 text-[12px] justify-between">
-                        <p class="text-white/55">Lead Software Engineer</p>
-
-                        <time class="text-gray-500/85">Dec 2023 - Jan 2024</time
+                return (
+                    <article class="flex gap-3 items-start">
+                        <div
+                            class="rounded-xl aspect-square h-10 flex items-center justify-center "
+                            style={`background-color: ${backgroundColor}`}
                         >
-                    </div>
-                </div>
-            </div>
-        </article>
+                            <p class="font-black m-0">{name[0]}</p>
+                        </div>
 
-        <article class="flex gap-3 items-start">
-            <div
-                class="rounded-xl aspect-square h-10 flex items-center justify-center bg-blue-600/70"
-            >
-                <p class="font-black m-0">S</p>
-            </div>
+                        <div class="space-y-1 w-full">
+                            <p class="text-sm font-semibold">{name}</p>
 
-            <div class="space-y-1">
-                <p class="text-sm font-semibold">Symph</p>
+                            <div class="-space-y-0.5">
+                                <div class="flex gap-10 text-[12px] justify-between">
+                                    <p class="text-white/55">{position}</p>
 
-                <div class="-space-y-0.5">
-                    <div class="flex gap-10 text-[12px] justify-between">
-                        <p class="text-white/55">Software Engineer Intern</p>
-
-                        <time class="text-gray-500/85">Dec 2023 - Jan 2024</time
-                        >
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <article class="flex gap-3 items-start">
-            <div
-                class="rounded-xl aspect-square h-10 flex items-center justify-center bg-blue-600/70"
-            >
-                <p class="font-black m-0">S</p>
-            </div>
-
-            <div class="space-y-1">
-                <p class="text-sm font-semibold">Symph</p>
-
-                <div class="-space-y-0.5">
-                    <div class="flex gap-10 text-[12px] justify-between">
-                        <p class="text-white/55">Software Engineer Intern</p>
-
-                        <time class="text-gray-500/85">Dec 2023 - Jan 2024</time
-                        >
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <article class="flex gap-3 items-start">
-            <div
-                class="rounded-xl aspect-square h-10 flex items-center justify-center bg-blue-600/70"
-            >
-                <p class="font-black m-0">S</p>
-            </div>
-
-            <div class="space-y-1">
-                <p class="text-sm font-semibold">Symph</p>
-
-                <div class="-space-y-0.5">
-                    <div class="flex gap-10 text-[12px] justify-between">
-                        <p class="text-white/55">Software Engineer Intern</p>
-
-                        <time class="text-gray-500/85">Dec 2023 - Jan 2024</time
-                        >
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <article class="flex gap-3 items-start">
-            <div
-                class="rounded-xl aspect-square h-10 flex items-center justify-center bg-blue-600/70"
-            >
-                <p class="font-black m-0">S</p>
-            </div>
-
-            <div class="space-y-1">
-                <p class="text-sm font-semibold">Symph</p>
-
-                <div class="-space-y-0.5">
-                    <div class="flex gap-10 text-[12px] justify-between">
-                        <p class="text-white/55">Software Engineer Intern</p>
-
-                        <time class="text-gray-500/85">Dec 2023 - Jan 2024</time
-                        >
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <article class="flex gap-3 items-start">
-            <div
-                class="rounded-xl aspect-square h-10 flex items-center justify-center bg-blue-600/70"
-            >
-                <p class="font-black m-0">S</p>
-            </div>
-
-            <div class="space-y-1">
-                <p class="text-sm font-semibold">Symph</p>
-
-                <div class="-space-y-0.5">
-                    <div class="flex gap-10 text-[12px] justify-between">
-                        <p class="text-white/55">Software Engineer Intern</p>
-
-                        <time class="text-gray-500/85">Dec 2023 - Jan 2024</time
-                        >
-                    </div>
-                </div>
-            </div>
-        </article>
+                                    <time class="text-gray-500/85">{date}</time>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                );
+            })
+        }
     </div>
 </section>
