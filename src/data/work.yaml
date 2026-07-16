@@ -1,71 +1,80 @@
-sayzo-threadlify:
-    order: 8
-    name: Sayzo & Threadlify
+sayzo:
+    name: Sayzo
     position: Co-Founder
-    date: Nov 2025 - Jun 2026
-    duration: 8 mos
+    dateStart: Mar 2026
+    dateEnd: Jun 2026
+    duration: 4 mos
+    description: |
+        Startup
+
+threadlify:
+    name: Threadlify
+    position: Co-Founder
+    dateStart: Nov 2025
+    dateEnd: Feb 2026
+    duration: 4 mos
     description: |
         Startup
 
 cloudconsole:
-    order: 7
     name: CloudConsole IT Consulting
     position: Software Engineer Intern
-    date: Jun 2025 - Jul 2025
+    dateStart: Jun 2025
+    dateEnd: Jul 2025
     duration: 2 mos
     description: |
         Internship and start of homelabs
 
 miagao-valley:
-    order: 6
     name: Miagao Valley Student Org
     position: Founder
-    date: Aug 2024 - May 2025
+    dateStart: Aug 2024
+    dateEnd: May 2025
     duration: 10 mos
     description: |
         Hackathon, Competitive Programming
 
 punto:
-    order: 5
     name: Punto
     position: Lead Software Engineer
-    date: Nov 2024 - Jan 2025
+    dateStart: Nov 2024
+    dateEnd: Jan 2025
     duration: 3 mos
     description: |
         Startup, Reached out to cafes
 
 unihub:
-    order: 4
     name: UniHub
     position: Tech Lead
-    date: May 2023 - Jan 2024
+    dateStart: May 2023
+    dateEnd: Jan 2024
     duration: 9 mos
     description: |
         Handled team of devs and led architectural decisions
 
 convo:
-    order: 3
     name: CONVO | E-Commerce Agency
     position: Shopify Theme Developer
-    date: Sep 2022 - Nov 2022
+    dateStart: Sep 2022
+    dateEnd: Nov 2022
     duration: 3 mos
     description: |
         Freelance theme development
 
 symph:
-    order: 2
     name: Symph
     position: Web Developer Intern
-    date: Jul 2022 - Sep 2022
+    dateStart: Jul 2022
+    dateEnd: Sep 2022
     duration: 3 mos
     description: |
         Updated legacy codebase, created internal API funnel
 
 skvllpvnkz:
-    order: 1
     name: Skvllpvnkz
     position: Web Developer
-    date: Jan 2022 - May 2022
+    dateStart: Jan 2022
+    dateEnd: May 2022
     duration: 5 mos
     description: |
         Web3App

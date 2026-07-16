@@ -3,7 +3,12 @@ import { getCollection } from "astro:content";
 import { nameToColor } from "../util/color";
 
 const work = await getCollection("work");
-const sorted = work.toSorted((a, b) => b.data.order - a.data.order);
+const sorted = work.toSorted((a, b) => {
+    const dateA = new Date(a.data.dateStart).toISOString();
+    const dateB = new Date(b.data.dateStart).toISOString();
+
+    return dateB.localeCompare(dateA);
+});
 ---
 
 <section
@@ -16,7 +21,7 @@ const sorted = work.toSorted((a, b) => b.data.order - a.data.order);
         {
             sorted.map((work) => {
                 const { data } = work;
-                const { name, position, date } = data;
+                const { name, position, dateStart, dateEnd } = data;
                 const backgroundColor = nameToColor(name);
 
                 return (
@@ -35,7 +40,9 @@ const sorted = work.toSorted((a, b) => b.data.order - a.data.order);
                                 <div class="flex gap-10 text-[12px] justify-between">
                                     <p class="text-white/55">{position}</p>
 
-                                    <time class="text-gray-500/85">{date}</time>
+                                    <time class="text-gray-500/85">
+                                        {dateStart} - {dateEnd}
+                                    </time>
                                 </div>
                             </div>
                         </div>
