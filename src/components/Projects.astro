@@ -2,6 +2,8 @@
 import { Icon } from "astro-icon/components";
 import type { GitHubRepo } from "../types/github";
 
+export const prerender = false;
+
 // 2 weeks (60 secs * 60 mins * 24 hours * 14 days)
 const cacheDuration = 60 * 60 * 24 * 14;
 
@@ -11,6 +13,11 @@ Astro.cache.set({
     maxAge: cacheDuration,
     swr: staleWhileRevalidatingDuration,
 });
+
+Astro.response.headers.set(
+    "Vercel-CDN-Cache-Control",
+    `public, s-maxage=${cacheDuration}, stale-while-revalidate=${staleWhileRevalidatingDuration}`,
+);
 
 // GitHub projects fetching
 const username = "ezerssss";
