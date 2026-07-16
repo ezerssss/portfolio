@@ -4,6 +4,7 @@ sayzo:
     dateStart: Mar 2026
     dateEnd: Jun 2026
     duration: 4 mos
+    image: sayzo.png
     description: |
         Startup
 
@@ -13,6 +14,7 @@ threadlify:
     dateStart: Nov 2025
     dateEnd: Feb 2026
     duration: 4 mos
+    image: threadlify.jfif
     description: |
         Startup
 
@@ -22,6 +24,7 @@ cloudconsole:
     dateStart: Jun 2025
     dateEnd: Jul 2025
     duration: 2 mos
+    image: cloudconsole.jfif
     description: |
         Internship and start of homelabs
 
@@ -31,6 +34,8 @@ miagao-valley:
     dateStart: Aug 2024
     dateEnd: May 2025
     duration: 10 mos
+    image: miagaovalley.png
+    color: "#26292f"
     description: |
         Hackathon, Competitive Programming
 
@@ -40,6 +45,8 @@ punto:
     dateStart: Nov 2024
     dateEnd: Jan 2025
     duration: 3 mos
+    image: punto.svg
+    color: white
     description: |
         Startup, Reached out to cafes
 
@@ -49,6 +56,7 @@ unihub:
     dateStart: May 2023
     dateEnd: Jan 2024
     duration: 9 mos
+    image: unihub.jfif
     description: |
         Handled team of devs and led architectural decisions
 
@@ -58,6 +66,7 @@ convo:
     dateStart: Sep 2022
     dateEnd: Nov 2022
     duration: 3 mos
+    image: convo.jfif
     description: |
         Freelance theme development
 
@@ -67,6 +76,7 @@ symph:
     dateStart: Jul 2022
     dateEnd: Sep 2022
     duration: 3 mos
+    image: symph.jfif
     description: |
         Updated legacy codebase, created internal API funnel
 
@@ -76,5 +86,7 @@ skvllpvnkz:
     dateStart: Jan 2022
     dateEnd: May 2022
     duration: 5 mos
+    image: skvllpvnkz.png
+    color: gray
     description: |
         Web3App

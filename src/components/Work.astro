@@ -13,24 +13,29 @@ const sorted = work.toSorted((a, b) => {
 
 <section
     id="work"
-    class="lg:px-8 lg:sticky lg:top-6 lg:pt-5 lg:pb-8 rounded-xl lg:border lg:border-[#1db6a5]/40 h-fit w-fit space-y-5 lg:min-w-105"
+    class="lg:px-7 lg:sticky lg:top-6 lg:pt-4 lg:pb-7 rounded-xl lg:border lg:border-[#1db6a5]/40 h-fit w-fit space-y-5 lg:min-w-120"
 >
-    <h2 class="font-semibold text-lg">Work</h2>
+    <h2 class="font-semibold text-lg">Experience</h2>
 
-    <div class="space-y-8">
+    <div class="space-y-8 w-full">
         {
             sorted.map((work) => {
                 const { data } = work;
-                const { name, position, dateStart, dateEnd } = data;
+                const { name, position, dateStart, dateEnd, image, color } =
+                    data;
                 const backgroundColor = nameToColor(name);
 
                 return (
-                    <article class="flex gap-3 items-start">
+                    <article class="flex gap-3 w-full items-start">
                         <div
-                            class="rounded-xl aspect-square h-10 flex items-center justify-center "
-                            style={`background-color: ${backgroundColor}`}
+                            class="rounded-xl overflow-hidden h-10! min-w-10! aspect-square! flex items-center justify-center object-fit"
+                            style={`background-color: ${color ?? backgroundColor}`}
                         >
-                            <p class="font-black m-0">{name[0]}</p>
+                            {image ? (
+                                <img src={`/images/${image}`} class="h-full" />
+                            ) : (
+                                <p class="font-black m-0">{name[0]}</p>
+                            )}
                         </div>
 
                         <div class="space-y-1 w-full">
