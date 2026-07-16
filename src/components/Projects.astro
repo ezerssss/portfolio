@@ -1,20 +1,17 @@
 ---
 import { Icon } from "astro-icon/components";
 import type { GitHubRepo } from "../types/github";
+import {
+    cacheDuration,
+    staleWhileRevalidatingDuration,
+} from "../constants/cache";
 
 export const prerender = false;
 
-// 2 weeks (60 secs * 60 mins * 24 hours * 14 days)
-const cacheDuration = 60 * 60 * 24 * 14;
-
-// 1 hour (60 secs * 60 mins * 5 hours)
-const staleWhileRevalidatingDuration = 60 * 60 * 1;
 Astro.cache.set({
     maxAge: cacheDuration,
     swr: staleWhileRevalidatingDuration,
 });
-
-console.log(Astro.cache.enabled);
 
 // GitHub projects fetching
 const username = "ezerssss";
