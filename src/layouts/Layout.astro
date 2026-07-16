@@ -18,10 +18,29 @@ import "../styles/global.css";
         <meta name="generator" content={Astro.generator} />
         <title>Ezra Magbanua</title>
     </head>
-    <body
-        class="py-6 lg:py-10 px-8 flex flex-col-reverse lg:flex-row gap-10 lg:gap-20 lg:justify-between lg:max-w-300 m-auto"
-    >
-        <slot />
+    <body class="py-6 lg:py-10 px-8 lg:max-w-300 m-auto space-y-10">
+        <div>
+            <h1 class="text-2xl italic font-thin">
+                <a
+                    href="https://www.linkedin.com/in/ezramagbanua/"
+                    target="_blank"
+                    class="underline decoration-dashed hover:decoration-[#1db6a5]"
+                >
+                    Ezra's</a
+                >
+                {" "}
+                low maintenance self updating portfolio website
+            </h1>
+            <p class="text-sm font-thin text-white/65">
+                Hopefully I remember the things I need to manually update...
+            </p>
+        </div>
+
+        <div
+            class="flex flex-col-reverse lg:flex-row gap-10 lg:gap-20 lg:justify-between"
+        >
+            <slot />
+        </div>
     </body>
 </html>
 
