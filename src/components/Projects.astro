@@ -2,6 +2,11 @@
 export const prerender = false;
 
 import { Icon } from "astro-icon/components";
+import type { GitHubRepo } from "../types/github";
+
+const githubProjectsUrl = new URL("/githubprojects.json", Astro.url);
+const response = await fetch(githubProjectsUrl);
+const projects = (await response.json()) as GitHubRepo[];
 ---
 
 <section id="projects" class="w-fit space-y-5">
@@ -40,124 +45,43 @@ import { Icon } from "astro-icon/components";
             </article>
         </a>
 
-        <a
-            class="block"
-            href="https://github.com/ezerssss/sayzo#sayzo"
-            target="_blank"
-        >
-            <article class="group cursor-pointer w-fit">
-                <time class="flex gap-2 text-[12px] text-white/55">
-                    <p>|</p>
-                    <p>July 16, 2026</p>
-                </time>
-
-                <div class="mt-1 mb-0.5 flex gap-1 items-center">
-                    <Icon name="mdi:github" size={20} />
-
-                    <p class="font-bold">Sayzo</p>
-                </div>
-
-                <p class="text-white/55 text-sm">
-                    Your personal English coach that tailors to your real
-                    meetings and conversations.
-                </p>
-
-                <p
-                    class="text-[12px] text-[#1db6a5] mt-3 group-hover:underline"
+        {
+            projects.map((project) => (
+                <a
+                    class="block"
+                    href={`${project.html_url}#${project.name}`}
+                    target="_blank"
                 >
-                    See more in github
-                </p>
-            </article>
-        </a>
+                    <article class="group cursor-pointer w-fit">
+                        <time class="flex gap-2 text-[12px] text-white/55">
+                            <p>|</p>
+                            <p>
+                                {new Date(
+                                    project.created_at,
+                                ).toLocaleDateString("en-US", {
+                                    month: "long",
+                                    day: "numeric",
+                                    year: "numeric",
+                                })}
+                            </p>
+                        </time>
 
-        <a
-            class="block"
-            href="https://github.com/ezerssss/threadlify#threadlify"
-            target="_blank"
-        >
-            <article class="group cursor-pointer w-fit">
-                <time class="flex gap-2 text-[12px] text-white/55">
-                    <p>|</p>
-                    <p>June 3, 2026</p>
-                </time>
+                        <div class="mt-1 mb-0.5 flex gap-1 items-center">
+                            <Icon name="mdi:github" size={20} />
 
-                <div class="flex mt-1 mb-0.5 gap-1 items-center">
-                    <Icon name="mdi:github" size={20} />
+                            <p class="font-bold capitalize">{project.name}</p>
+                        </div>
 
-                    <p class="font-bold">Threadlify</p>
-                </div>
+                        <p class="text-white/55 text-sm">
+                            {project.description}
+                        </p>
 
-                <p class="text-white/55 text-sm">
-                    Reddit scanner that finds relevant threads for your products
-                    to help you evaluate your PMF.
-                </p>
-
-                <p
-                    class="text-[12px] text-[#1db6a5] mt-3 group-hover:underline"
-                >
-                    See more in github
-                </p>
-            </article>
-        </a>
-
-        <a
-            class="block"
-            href="https://github.com/ezerssss/threadlify#threadlify"
-            target="_blank"
-        >
-            <article class="group cursor-pointer w-fit">
-                <time class="flex gap-2 text-[12px] text-white/55">
-                    <p>|</p>
-                    <p>June 3, 2026</p>
-                </time>
-
-                <div class="flex mt-1 mb-0.5 gap-1 items-center">
-                    <Icon name="mdi:github" size={20} />
-
-                    <p class="font-bold">Threadlify</p>
-                </div>
-
-                <p class="text-white/55 text-sm">
-                    Reddit scanner that finds relevant threads for your products
-                    to help you evaluate your PMF.
-                </p>
-
-                <p
-                    class="text-[12px] text-[#1db6a5] mt-3 group-hover:underline"
-                >
-                    See more in github
-                </p>
-            </article>
-        </a>
-
-        <a
-            class="block"
-            href="https://github.com/ezerssss/threadlify#threadlify"
-            target="_blank"
-        >
-            <article class="group cursor-pointer w-fit">
-                <time class="flex gap-2 text-[12px] text-white/55">
-                    <p>|</p>
-                    <p>June 3, 2026</p>
-                </time>
-
-                <div class="flex mt-1 mb-0.5 gap-1 items-center">
-                    <Icon name="mdi:github" size={20} />
-
-                    <p class="font-bold">Threadlify</p>
-                </div>
-
-                <p class="text-white/55 text-sm">
-                    Reddit scanner that finds relevant threads for your products
-                    to help you evaluate your PMF.
-                </p>
-
-                <p
-                    class="text-[12px] text-[#1db6a5] mt-3 group-hover:underline"
-                >
-                    See more in github
-                </p>
-            </article>
-        </a>
+                        <p class="text-[12px] text-[#1db6a5] mt-3 group-hover:underline">
+                            See more in github
+                        </p>
+                    </article>
+                </a>
+            ))
+        }
     </div>
 </section>
