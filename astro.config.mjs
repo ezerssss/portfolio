@@ -10,6 +10,8 @@ import { cacheVercel } from "@astrojs/vercel/cache";
 
 // https://astro.build/config
 export default defineConfig({
+    output: "server",
+
     vite: {
         plugins: [tailwindcss()],
     },
