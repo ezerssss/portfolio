@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import { nameToColor } from "../util/color";
 
 const work = await getCollection("work");
+const sorted = work.toSorted((a, b) => b.data.order - a.data.order);
 ---
 
 <section
@@ -13,8 +14,8 @@ const work = await getCollection("work");
 
     <div class="space-y-8">
         {
-            work.map((w) => {
-                const { data } = w;
+            sorted.map((work) => {
+                const { data } = work;
                 const { name, position, date } = data;
                 const backgroundColor = nameToColor(name);
 
