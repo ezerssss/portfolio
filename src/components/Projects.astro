@@ -33,7 +33,7 @@ const projects = data.toSorted((a, b) =>
 ---
 
 <section id="projects" class="w-fit space-y-5">
-    <h2 class="font-semibold text-lg">Projects / Blogs</h2>
+    <h2 class="font-semibold text-xl">Projects / Blogs</h2>
 
     <div class="space-y-10">
         <a
@@ -76,7 +76,7 @@ const projects = data.toSorted((a, b) =>
                     target="_blank"
                 >
                     <article class="group cursor-pointer w-fit">
-                        <time class="flex gap-2 text-[12px] text-white/55">
+                        <time class="flex gap-2 text-sm text-white/55">
                             <p>|</p>
                             <p>
                                 {new Date(
@@ -92,14 +92,14 @@ const projects = data.toSorted((a, b) =>
                         <div class="mt-1 mb-0.5 flex gap-1 items-center">
                             <Icon name="mdi:github" size={20} />
 
-                            <p class="font-bold capitalize">{project.name}</p>
+                            <p class="font-bold capitalize text-lg">
+                                {project.name}
+                            </p>
                         </div>
 
-                        <p class="text-white/75 text-sm">
-                            {project.description}
-                        </p>
+                        <p class="text-white/75 text">{project.description}</p>
 
-                        <p class="text-[12px] text-[#1db6a5] mt-3 group-hover:underline">
+                        <p class="text-sm text-[#1db6a5] mt-3 group-hover:underline">
                             See more in github
                         </p>
                     </article>
