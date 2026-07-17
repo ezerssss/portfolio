@@ -1,15 +1,17 @@
 ---
 layout: "../../../layouts/BlogLayout.astro"
-title: My low maintenance self updating portfolio website
+html_url: "/blogs/my-low-maintenance-self-updating-portfolio-website.md"
+name: My low maintenance self updating portfolio website
 description: First ever blog! Have fun reading it because I definitely did not have fun when I wrote it.
 author: Ezra
+created_at: July 18, 2026
 ---
 
 # My low maintenance self updating portfolio website
 
 > I always forget to update my portfolio website, hopefully this does the job…
 
-Date: July 17, 2026
+Date: July 18, 2026
 
 ## 2 years ago
 
@@ -41,4 +43,4 @@ I want to try out blogging since ever, and this is actually an attempt of my fir
 
 ## Check it out at my [GitHub](https://github.com/ezerssss/portfolio)
 
-The code's shit but its okay, I just want to say.... I did not vibe code this and I'm proud of that haha. I've realized how much vibe coding has made me rusty on a lot of skills I used to think was just so easy.
+The code's shit but its okay. I just want to say.... I did not vibe code this and I'm proud of that haha. I've realized how much vibe coding has made me rusty on a lot of skills I used to think was just so easy.

@@ -1,8 +1,12 @@
 import { defineCollection } from "astro:content";
-import { file } from "astro/loaders";
+import { file, glob } from "astro/loaders";
 
 const work = defineCollection({
     loader: file("src/data/work.yaml"),
 });
 
-export const collections = { work };
+const blog = defineCollection({
+    loader: glob({ pattern: "**/*.md", base: "./src/pages/blogs" }),
+});
+
+export const collections = { work, blog };

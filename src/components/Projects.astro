@@ -5,6 +5,7 @@ import {
     cacheDuration,
     staleWhileRevalidatingDuration,
 } from "../constants/cache";
+import { getCollection } from "astro:content";
 
 export const prerender = false;
 
@@ -27,80 +28,71 @@ if (!response.ok) {
 const data = (await response.json()) as GitHubRepo[];
 
 // Descending order (Most recent first)
-const projects = data.toSorted((a, b) =>
-    b.created_at.localeCompare(a.created_at),
-);
+const projects = data
+    .toSorted((a, b) => b.created_at.localeCompare(a.created_at))
+    .map((project) => ({ ...project, type: "project" }));
+
+const blogsData = await getCollection("blog");
+const blogs = blogsData
+    .toSorted((a, b) => {
+        const dateA = new Date(a.data.created_at).toISOString();
+        const dateB = new Date(b.data.created_at).toISOString();
+
+        return dateB.localeCompare(dateA);
+    })
+    .map((blog) => ({ ...blog.data, type: "blog" }));
+
+const merged = [...projects, ...blogs].toSorted((a, b) => {
+    const dateA = new Date(a.created_at).toISOString();
+    const dateB = new Date(b.created_at).toISOString();
+
+    return dateB.localeCompare(dateA);
+});
 ---
 
 <section id="projects" class="w-fit space-y-5">
     <h2 class="font-semibold text-xl">Projects / Blogs</h2>
-
     <div class="space-y-10">
-        <a
-            class="block"
-            href="https://github.com/ezerssss/sayzo#sayzo"
-            target="_blank"
-        >
-            <article class="group cursor-pointer w-fit">
-                <time class="flex gap-2 text-[12px] text-white/55">
-                    <p>|</p>
-                    <p>July 16, 2026</p>
-                </time>
-
-                <div class="mt-1 mb-0.5 flex gap-1 items-center">
-                    <Icon name="mdi:book" size={20} />
-
-                    <p class="font-bold">
-                        Finally creating my dream dumb smart home devices
-                    </p>
-                </div>
-
-                <p class="text-white/75 text-sm">
-                    Check out how I botched a phone and an ESP32 just to turn on
-                    a fan.
-                </p>
-
-                <p
-                    class="text-[12px] text-[#1db6a5] mt-3 group-hover:underline"
-                >
-                    Click to read more
-                </p>
-            </article>
-        </a>
-
         {
-            projects.map((project) => (
+            merged.map((data) => (
                 <a
                     class="block"
-                    href={`${project.html_url}#${project.name}`}
+                    href={`${data.html_url}#${data.type === "project" ? data.name : ""}`}
                     target="_blank"
                 >
                     <article class="group cursor-pointer w-fit">
                         <time class="flex gap-2 text-sm text-white/55">
                             <p>|</p>
                             <p>
-                                {new Date(
-                                    project.created_at,
-                                ).toLocaleDateString("en-US", {
-                                    month: "long",
-                                    day: "numeric",
-                                    year: "numeric",
-                                })}
+                                {new Date(data.created_at).toLocaleDateString(
+                                    "en-US",
+                                    {
+                                        month: "long",
+                                        day: "numeric",
+                                        year: "numeric",
+                                    },
+                                )}
                             </p>
                         </time>
 
                         <div class="mt-1 mb-0.5 flex gap-1 items-center">
-                            <Icon name="mdi:github" size={20} />
+                            {data.type === "project" ? (
+                                <Icon name="mdi:github" size={20} />
+                            ) : (
+                                <Icon name="mdi:book" size={20} />
+                            )}
 
                             <p class="font-bold capitalize text-lg">
-                                {project.name}
+                                {data.name}
                             </p>
                         </div>
 
-                        <p class="text-white/75 text">{project.description}</p>
+                        <p class="text-white/75 text">{data.description}</p>
 
-                        <p class="text-sm text-[#1db6a5] mt-3 group-hover:underline">
-                            See more in github
+                        <p class="text-sm text-[#1db6a5] mt-1 group-hover:underline">
+                            {data.type === "project"
+                                ? "See more in github"
+                                : "Click to read more"}
                         </p>
                     </article>
                 </a>
