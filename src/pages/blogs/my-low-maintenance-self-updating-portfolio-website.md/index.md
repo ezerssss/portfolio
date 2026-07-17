@@ -43,4 +43,4 @@ I want to try out blogging since ever, and this is actually an attempt of my fir
 
 ## Check it out at my [GitHub](https://github.com/ezerssss/portfolio)
 
-The code's shit but its okay. I just want to say.... I did not vibe code this and I'm proud of that haha. I've realized how much vibe coding has made me rusty on a lot of skills I used to think was just so easy.
+The code's shit but that's okay.
