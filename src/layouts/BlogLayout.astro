@@ -1,0 +1,37 @@
+---
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Geist:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"
+        />
+        <meta name="generator" content={Astro.generator} />
+        <title>Ezra Magbanua</title>
+    </head>
+    <body class="py-6 lg:py-10 px-5 max-w-200 m-auto prose dark:prose-invert">
+        <slot />
+    </body>
+</html>
+
+<style>
+    html {
+        background-color: oklch(0.141 0.005 285.823);
+        color: white;
+        font-family: "Geist", ui-sans-serif, system-ui;
+    }
+
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: #1f1f1f;
+    }
+</style>
